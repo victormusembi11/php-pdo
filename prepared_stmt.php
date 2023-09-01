@@ -52,7 +52,7 @@ function posts_multi_named_params($pdo, $author, $is_published)
 
 // posts_positional_params($pdo, $author);
 // posts_named_params($pdo, $author);
-posts_multi_named_params($pdo, $author, "true");
+// posts_multi_named_params($pdo, $author, "true");
 
 
 function fetch_single_post($pdo, $id)
@@ -64,4 +64,14 @@ function fetch_single_post($pdo, $id)
     echo $post->body;
 }
 
-fetch_single_post($pdo, 1);
+// fetch_single_post($pdo, 1);
+
+function author_post_count($pdo, $author)
+{
+    $stmt = $pdo->prepare("SELECT * FROM posts WHERE author = :author");
+    $stmt->execute(["author" => $author]);
+    $post_count = $stmt->rowCount();
+    echo $post_count;
+}
+
+author_post_count($pdo, $author);

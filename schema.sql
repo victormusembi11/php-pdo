@@ -13,8 +13,14 @@ CREATE TABLE posts (
 
 INSERT INTO posts (title, body, author, is_published)
 VALUES
-    ('Sample Post 1', 'This is the body of the first post.', 'John Doe', true),
-    ('Sample Post 2', 'This is the body of the second post.', 'Jane Smith', true),
-    ('Sample Post 3', 'This is the body of the third post.', 'Alice Johnson', false),
-    ('Sample Post 4', 'This is the body of the fourth post.', 'Bob Williams', true),
-    ('Sample Post 5', 'This is the body of the fifth post.', 'Eva Davis', false);
+    ('Book Review: "The Great Adventure"', 'This is a review of "The Great Adventure" by John Doe.', 'John Doe', true),
+    ('Exploring Uncharted Territories', 'A journey into the unknown with Jane Smith.', 'Jane Smith', false),
+    ('The Art of Coding', 'Discover the world of programming with Alice Johnson.', 'Alice Johnson', true),
+    ('The Mystery of the Lost City', 'Join Bob Williams on an epic quest to find the lost city.', 'Bob Williams', true),
+    ('A Journey Through Time', 'Travel through history with Eva Davis as your guide.', 'Eva Davis', false),
+    ('Programming Tips and Tricks', 'Learn valuable coding tips from John Doe.', 'John Doe', true),
+    ('The Secrets of the Universe', 'Unravel the mysteries of the cosmos with Jane Smith.', 'Jane Smith', true),
+    ('Cooking Adventures', 'Alice Johnson shares her culinary journey.', 'Alice Johnson', false),
+    ('The Hidden Treasures', 'Join Bob Williams on another adventure to discover hidden treasures.', 'Bob Williams', false),
+    ('Exploring the Natural World', 'Eva Davis takes you on a journey through the wonders of nature.', 'Eva Davis', true);
+

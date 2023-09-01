@@ -53,3 +53,15 @@ function posts_multi_named_params($pdo, $author, $is_published)
 // posts_positional_params($pdo, $author);
 // posts_named_params($pdo, $author);
 posts_multi_named_params($pdo, $author, "true");
+
+
+function fetch_single_post($pdo, $id)
+{
+    $sql = "SELECT * FROM posts WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(["id" => $id]);
+    $post = $stmt->fetch();
+    echo $post->body;
+}
+
+fetch_single_post($pdo, 1);

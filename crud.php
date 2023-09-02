@@ -63,12 +63,22 @@ function update_post($pdo, $id, $body)
 function delete_post($pdo, $id)
 {
     $sql = "DELETE FROM posts WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["id" => $id]);
-    echo "Post deleted";
-}
 
-// delete_post($pdo, 11);
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(["id" => $id]);
+        return array(
+            "status" => true,
+            "message" => "post deleted successfully!"
+        );
+    } catch (PDOException $e) {
+        return array(
+            "status" => false,
+            "message" => "post deletion failed!",
+            "error" => $e->getMessage()
+        );
+    }
+}
 
 
 function search_post($pdo, $search_string)

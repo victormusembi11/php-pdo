@@ -16,6 +16,11 @@ include_once __DIR__ . "/crud.php";
 // echo print_r($post);
 
 /* Update Post */
-$post = update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");
+// $post = update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");
+
+// echo print_r($post);
+
+/* Delete Post */
+$post = delete_post($pdo, 11);
 
 echo print_r($post);

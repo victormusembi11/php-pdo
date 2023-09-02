@@ -4,8 +4,10 @@ require __DIR__ . "/db_conn.php";
 
 function fetch_all_posts($pdo)
 {
+    $sql =  "SELECT * FROM posts";
+
     try {
-        $stmt = $pdo->query("SELECT * FROM posts");
+        $stmt = $pdo->query($sql);
         $posts = $stmt->fetchAll();
         return array(
             "status" => true,

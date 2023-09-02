@@ -10,9 +10,19 @@ function create_post($pdo, $title, $body, $author)
     echo "Post Added!";
 }
 
-create_post(
-    $pdo,
-    "Hello, World!",
-    "Quia a quas dolorem officiis quos. Voluptatum dolores accusamus quo architecto.",
-    "Victor M"
-);
+// create_post(
+//     $pdo,
+//     "Hello, World!",
+//     "Quia a quas dolorem officiis quos. Voluptatum dolores accusamus quo architecto.",
+//     "Victor M"
+// );
+
+function update_post($pdo, $id, $body)
+{
+    $sql = "UPDATE posts SET body = :body WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(["body" => $body, "id" => $id]);
+    echo "Post Updated";
+}
+
+update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");

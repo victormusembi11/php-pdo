@@ -23,4 +23,5 @@ VALUES
     ('Cooking Adventures', 'Alice Johnson shares her culinary journey.', 'Alice Johnson', false),
     ('The Hidden Treasures', 'Join Bob Williams on another adventure to discover hidden treasures.', 'Bob Williams', false),
     ('Exploring the Natural World', 'Eva Davis takes you on a journey through the wonders of nature.', 'Eva Davis', true);
+    ('Hello, World!', 'Unravel the mysteries of the cosmos with Jane Smith.', 'Jane Smith', true),
 

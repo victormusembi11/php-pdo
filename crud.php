@@ -2,6 +2,23 @@
 
 require __DIR__ . "/db_conn.php";
 
+function fetch_all_posts($pdo, $stmt, $type)
+{
+    $stmt = $pdo->query("SELECT * FROM posts");
+
+    if ($type == "assoc") {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo $row["title"] . "<br>";
+        }
+    } elseif ($type == "obj") {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+            echo $row->title . "<br>";
+        }
+    }
+}
+
+// fetch_all_posts($pdo, $stmt, "obj");
+
 function create_post($pdo, $title, $body, $author)
 {
     $sql = "INSERT INTO posts (title, body, author) VALUES (:title, :body, :author)";

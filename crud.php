@@ -21,7 +21,7 @@ function fetch_all_posts($pdo, $stmt, $type)
 
 function create_post($pdo, $title, $body, $author)
 {
-    $sql = "INSERT INT0 posts (title, body, author) VALUES (:title, :body, :author)";
+    $sql = "INSERT INTO posts (title, body, author) VALUES (:title, :body, :author)";
 
     try {
         $stmt = $pdo->prepare($sql);

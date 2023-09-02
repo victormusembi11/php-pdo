@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . "/db_conn.php";
-
 function fetch_all_posts($pdo)
 {
     $sql =  "SELECT * FROM posts";

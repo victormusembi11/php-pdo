@@ -25,4 +25,15 @@ function update_post($pdo, $id, $body)
     echo "Post Updated";
 }
 
-update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");
+// update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");
+
+
+function delete_post($pdo, $id)
+{
+    $sql = "DELETE FROM posts WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(["id" => $id]);
+    echo "Post deleted";
+}
+
+delete_post($pdo, 11);

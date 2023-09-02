@@ -3,7 +3,11 @@
 include_once __DIR__ . "/crud.php";
 
 /* Fetch all Posts */
-// fetch_all_posts($pdo, $stmt, "obj");
+$posts = fetch_all_posts($pdo);
+
+foreach ($posts['data'] as $post) {
+    echo $post->title . "<br>";
+}
 
 /* Create Post */
 // $post = create_post(
@@ -26,8 +30,8 @@ include_once __DIR__ . "/crud.php";
 // echo print_r($post);
 
 /* Search post by title */
-$search_results = search_post($pdo, "%Adventure%");
+// $search_results = search_post($pdo, "%Adventure%");
 
-foreach ($search_results["data"] as $post) {
-    echo $post->title . "<br>";
-}
+// foreach ($search_results["data"] as $post) {
+//     echo $post->title . "<br>";
+// }

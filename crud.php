@@ -2,18 +2,22 @@
 
 require __DIR__ . "/db_conn.php";
 
-function fetch_all_posts($pdo, $stmt, $type)
+function fetch_all_posts($pdo)
 {
-    $stmt = $pdo->query("SELECT * FROM posts");
-
-    if ($type == "assoc") {
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo $row["title"] . "<br>";
-        }
-    } elseif ($type == "obj") {
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-            echo $row->title . "<br>";
-        }
+    try {
+        $stmt = $pdo->query("SELECT * FROM posts");
+        $posts = $stmt->fetchAll();
+        return array(
+            "status" => true,
+            "message" => "successful",
+            "data" => $posts
+        );
+    } catch (PDOException $e) {
+        return array(
+            "status" => false,
+            "message" => "unsuccessful",
+            "error" => $e->getMessage()
+        );
     }
 }
 

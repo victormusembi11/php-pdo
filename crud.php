@@ -36,4 +36,20 @@ function delete_post($pdo, $id)
     echo "Post deleted";
 }
 
-delete_post($pdo, 11);
+// delete_post($pdo, 11);
+
+
+function search_post($pdo, $search_string)
+{
+    $sql = "SELECT * FROM posts WHERE title LIKE ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$search_string]);
+    $posts = $stmt->fetchAll();
+
+    foreach ($posts as $post) {
+        echo $post->title . "<br>";
+    }
+}
+
+
+search_post($pdo, "%Adventure%");

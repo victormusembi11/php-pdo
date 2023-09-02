@@ -21,18 +21,32 @@ function fetch_all_posts($pdo, $stmt, $type)
 
 function create_post($pdo, $title, $body, $author)
 {
-    $sql = "INSERT INTO posts (title, body, author) VALUES (:title, :body, :author)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["title" => $title, "body" => $body, "author" => $author]);
-    echo "Post Added!";
+    $sql = "INSERT INT0 posts (title, body, author) VALUES (:title, :body, :author)";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(["title" => $title, "body" => $body, "author" => $author]);
+        return array(
+            "status" => true,
+            "message" => "successful"
+        );
+    } catch (PDOException $e) {
+        return array(
+            "status" => false,
+            "message" => "unsuccessful",
+            "error" => $e->getMessage()
+        );
+    }
 }
 
-// create_post(
-//     $pdo,
-//     "Hello, World!",
-//     "Quia a quas dolorem officiis quos. Voluptatum dolores accusamus quo architecto.",
-//     "Victor M"
-// );
+$post = create_post(
+    $pdo,
+    "Bye, World!",
+    "Quia a quas dolorem officiis quos. Voluptatum dolores accusamus quo architecto.",
+    "Victor W"
+);
+
+echo print_r($post);
 
 function update_post($pdo, $id, $body)
 {
@@ -69,4 +83,4 @@ function search_post($pdo, $search_string)
 }
 
 
-search_post($pdo, "%Adventure%");
+// search_post($pdo, "%Adventure%");

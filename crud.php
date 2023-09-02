@@ -17,7 +17,6 @@ function fetch_all_posts($pdo, $stmt, $type)
     }
 }
 
-// fetch_all_posts($pdo, $stmt, "obj");
 
 function create_post($pdo, $title, $body, $author)
 {
@@ -39,24 +38,26 @@ function create_post($pdo, $title, $body, $author)
     }
 }
 
-$post = create_post(
-    $pdo,
-    "Bye, World!",
-    "Quia a quas dolorem officiis quos. Voluptatum dolores accusamus quo architecto.",
-    "Victor W"
-);
-
-echo print_r($post);
 
 function update_post($pdo, $id, $body)
 {
     $sql = "UPDATE posts SET body = :body WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(["body" => $body, "id" => $id]);
-    echo "Post Updated";
-}
 
-// update_post($pdo, 11, "Lorem ipsum dolor sit amet, consectetur adipisicing elit.");
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(["body" => $body, "id" => $id]);
+        return array(
+            "status" => true,
+            "message" => "post updated successfully!"
+        );
+    } catch (PDOException $e) {
+        return array(
+            "status" => false,
+            "message" => "post update failed!",
+            "error" => $e->getMessage()
+        );
+    }
+}
 
 
 function delete_post($pdo, $id)

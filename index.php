@@ -21,6 +21,13 @@ include_once __DIR__ . "/crud.php";
 // echo print_r($post);
 
 /* Delete Post */
-$post = delete_post($pdo, 11);
+// $post = delete_post($pdo, 11);
 
-echo print_r($post);
+// echo print_r($post);
+
+/* Search post by title */
+$search_results = search_post($pdo, "%Adventure%");
+
+foreach ($search_results["data"] as $post) {
+    echo $post->title . "<br>";
+}

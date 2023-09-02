@@ -84,14 +84,21 @@ function delete_post($pdo, $id)
 function search_post($pdo, $search_string)
 {
     $sql = "SELECT * FROM posts WHERE title LIKE ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$search_string]);
-    $posts = $stmt->fetchAll();
 
-    foreach ($posts as $post) {
-        echo $post->title . "<br>";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$search_string]);
+        $posts = $stmt->fetchAll();
+        return array(
+            "status" => true,
+            "message" => "post deleted successfully!",
+            "data" => $posts
+        );
+    } catch (PDOException $e) {
+        return array(
+            "status" => false,
+            "message" => "post title search failed!",
+            "error" => $e->getMessage()
+        );
     }
 }
-
-
-// search_post($pdo, "%Adventure%");
